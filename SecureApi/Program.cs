@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SecureApi.Data;
 using SecureApi.Models;
+using SecureApi.Interfaces;
+using SecureApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.Password.RequireNonAlphanumeric = false;
 })
 .AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddScoped<ITokenService, TokenService>();
+
 
 var app = builder.Build();
 
