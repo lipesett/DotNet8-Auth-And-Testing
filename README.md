@@ -2,40 +2,38 @@
 
 ![.NET](https://img.shields.io/badge/.NET-8-blueviolet) ![C#](https://img.shields.io/badge/C%23-11-blue) ![xUnit](https://img.shields.io/badge/Tests-xUnit-green) ![JWT](https://img.shields.io/badge/Auth-JWT-red) ![Clean Architecture](https://img.shields.io/badge/Architecture-Clean-orange)
 
-This repository contains a complete RESTful API featuring a robust token-based authentication and authorization system using JWT. A key highlight of this project is the comprehensive suite of automated integration tests that validate the security and functionality of the API, ensuring its reliability.
+This repository is a focused .NET 8 project demonstrating the implementation of a secure, token-based authentication and authorization system using JWT (JSON Web Tokens). The API provides the essential endpoints for user registration and login, alongside a protected resource to validate the security flow. A key feature is the inclusion of foundational integration tests (xUnit) that automatically verify the authentication logic, ensuring that protected endpoints are correctly secured.
 
-Built with .NET 8, this project demonstrates a professional approach to creating secure and verifiable backend services.
+## 🚀 Key Features & Concepts Demonstrated
 
-## 🚀 Concepts and Technologies Applied
-
-This project showcases a wide range of essential backend development skills:
+This project serves as a practical demonstration of the following concepts and technologies:
 
 * **Security & Authentication:**
-    * **ASP.NET Core Identity:** For secure user and password management, including hashing and storing user data.
-    * **JWT (JSON Web Token) Authentication:** Implementation of a stateless, token-based authentication flow. Includes endpoints for user registration and login, and token generation via a dedicated `TokenService`.
+    * **ASP.NET Core Identity:** Used for the underlying user and password management, including secure hashing and data storage.
+    * **JWT (JSON Web Token) Authentication:** Implementation of a stateless, token-based flow with endpoints for user registration, login, and token generation via a dedicated `TokenService`.
     * **Authorization Middleware:** Configuration of the `JwtBearer` middleware to validate tokens on incoming requests.
-    * **Protected Endpoints:** Use of the `[Authorize]` attribute to secure specific API resources, making them accessible only to authenticated users.
+    * **Protected Endpoints:** Use of the `[Authorize]` attribute to secure specific API resources from unauthenticated access.
 
 * **Automated Testing (xUnit):**
-    * **Integration Testing:** A dedicated test project (`SecureApi.Tests`) that validates the API's behavior from end to end.
-    * **`WebApplicationFactory`:** Utilization of an in-memory test server to make real HTTP requests to the API without needing to host it.
-    * **In-Memory SQLite Database:** Configuration of a custom `WebApplicationFactory` to ensure each test run uses a clean, isolated, in-memory database, guaranteeing test atomicity and reliability.
-    * **Security Testing:** Tests that specifically prove the security rules are working, verifying that endpoints return `401 Unauthorized` for requests without a token and `200 OK` for requests with a valid token.
+    * **Integration Testing:** A dedicated test project (`SecureApi.Tests`) with foundational tests that validate the API's security logic from end to end.
+    * **`WebApplicationFactory`:** Utilization of a custom, in-memory test server to make real HTTP requests to the API.
+    * **In-Memory SQLite Database:** Configuration of the test factory to use a clean, isolated, in-memory database for each test run, ensuring reliable and repeatable test results.
+    * **Security Verification:** Automated tests prove that security rules are enforced, correctly returning `401 Unauthorized` for requests without a token and `200 OK` for requests with a valid token.
 
 * **Architecture & Best Practices:**
-    * **Clean Architecture & SOLID:** A layered architecture (Controller, Service, Repository) that adheres to SOLID principles for maintainable and scalable code.
-    * **Repository Pattern & Dependency Injection:** Abstraction of data access and extensive use of DI for a decoupled and testable codebase.
-    * **Swagger/OpenAPI:** Configuration of Swagger to support JWT authentication, allowing for easy manual testing of protected endpoints via the "Authorize" button.
+    * **Clean Architecture & SOLID:** A layered architecture (Controller, Service, Repository) that adheres to SOLID principles for a maintainable codebase.
+    * **Repository Pattern & Dependency Injection:** Abstraction of data access and extensive use of DI for a decoupled and testable application structure.
+    * **Swagger/OpenAPI:** Configuration of Swagger to support JWT authentication, allowing for easy manual testing of protected endpoints.
 
 ## 📋 API Endpoints
 
-The API exposes the following endpoints:
+The API exposes the following endpoints to demonstrate the authentication flow:
 
 | Verb     | Route                 | Description                        | Security             |
 | :------- | :-------------------- | :--------------------------------- | :------------------- |
 | `POST`   | `/api/Auth/register`  | Registers a new user.              | **Public** |
 | `POST`   | `/api/Auth/login`     | Authenticates a user and returns a JWT. | **Public** |
-| `GET`    | `/api/Products`       | Lists all products.                | **Protected (Requires Token)** |
+| `GET`    | `/api/Products`       | (Example) Lists all products.                | **Protected (Requires Token)** |
 
 ## ⚙️ How to Run the Project
 
@@ -47,23 +45,36 @@ The API exposes the following endpoints:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/SEU-USUARIO/.Net8-Auth-And-Testing.git](https://github.com/SEU-USUARIO/.Net8-Auth-And-Testing.git)
+    git clone [https://github.com/SEU-USUARIO/.Net8-RestfulAPI-With-Middleware.git](https://github.com/SEU-USUARIO/.Net8-RestfulAPI-With-Middleware.git)
     ```
     (Remember to replace `SEU-USUARIO` with your GitHub username)
 
 2.  **Navigate to the project folder:**
     ```bash
-    cd .Net8-Auth-And-Testing/SecureApi
+    cd .Net8-RestfulAPI-With-Middleware/SecureApi
     ```
 
 3.  **Prepare the Database (First time only):**
-    This command creates the `secureapi.db` database file with the Identity tables.
-    ```bash
-    dotnet ef database update
-    ```
-    > **Note:** If you are using Visual Studio's Package Manager Console, use the command `Update-Database` instead. If the `dotnet ef` command is not found in your terminal, you may need to install it globally with `dotnet tool install --global dotnet-ef`.
+    This command creates the `secureapi.db` database file with the Identity tables. The command you use depends on your terminal.
+
+    * **If you are using a standard terminal (Git Bash, PowerShell, CMD):**
+        First, you may need to install the EF Core global tool (you only need to do this once per machine):
+        ```bash
+        dotnet tool install --global dotnet-ef
+        ```
+        Then, run the update command:
+        ```bash
+        dotnet ef database update
+        ```
+
+    * **If you are using the Visual Studio Package Manager Console (PMC):**
+        Simply run the command:
+        ```powershell
+        Update-Database
+        ```
 
 4.  **Run the application:**
+    This is the command you will use daily to start the API server.
     ```bash
     dotnet run
     ```
@@ -89,40 +100,38 @@ You can run the automated tests in two ways:
 
 ![.NET](https://img.shields.io/badge/.NET-8-blueviolet) ![C#](https://img.shields.io/badge/C%23-11-blue) ![xUnit](https://img.shields.io/badge/Testes-xUnit-green) ![JWT](https://img.shields.io/badge/Auth-JWT-red) ![Arquitetura Limpa](https://img.shields.io/badge/Arquitetura-Clean-orange)
 
-Este repositório contém uma API RESTful completa com um sistema robusto de autenticação e autorização baseado em tokens JWT. Um destaque do projeto é a suíte abrangente de testes de integração automatizados que validam a segurança e a funcionalidade da API, garantindo sua confiabilidade.
+Este repositório é um projeto focado em .NET 8 que demonstra a implementação de um sistema seguro de autenticação e autorização baseado em tokens JWT (JSON Web Tokens). A API fornece os endpoints essenciais para registro e login de usuários, juntamente com um recurso protegido para validar o fluxo de segurança. Uma característica chave é a inclusão de testes de integração fundamentais (xUnit) que verificam automaticamente a lógica de autenticação, garantindo que os endpoints protegidos estão corretamente seguros.
 
-Construído com .NET 8, este projeto demonstra uma abordagem profissional para a criação de serviços de backend seguros e verificáveis.
+## 🚀 Principais Funcionalidades e Conceitos Demonstrados
 
-## 🚀 Conceitos e Tecnologias Aplicadas
-
-Este projeto demonstra uma vasta gama de habilidades essenciais para o desenvolvimento backend:
+Este projeto serve como uma demonstração prática dos seguintes conceitos e tecnologias:
 
 * **Segurança e Autenticação:**
-    * **ASP.NET Core Identity:** Para gerenciamento seguro de usuários e senhas, incluindo hashing e armazenamento de dados de usuário.
-    * **Autenticação JWT (JSON Web Token):** Implementação de um fluxo de autenticação stateless baseado em token. Inclui endpoints para registro e login de usuários, e geração de token via um `TokenService` dedicado.
-    * **Middleware de Autorização:** Configuração do middleware `JwtBearer` para validar tokens em requisições recebidas.
-    * **Endpoints Protegidos:** Uso do atributo `[Authorize]` para proteger recursos específicos da API, tornando-os acessíveis apenas a usuários autenticados.
+    * **ASP.NET Core Identity:** Utilizado para o gerenciamento de usuários e senhas, incluindo hashing seguro e armazenamento de dados.
+    * **Autenticação JWT (JSON Web Token):** Implementação de um fluxo de autenticação stateless baseado em token, com endpoints para registro, login e geração de token via um `TokenService` dedicado.
+    * **Middleware de Autorização:** Configuração do middleware `JwtBearer` para validar os tokens em requisições recebidas.
+    * **Endpoints Protegidos:** Uso do atributo `[Authorize]` para proteger recursos específicos da API contra acesso não autenticado.
 
 * **Testes Automatizados (xUnit):**
-    * **Testes de Integração:** Um projeto de teste (`SecureApi.Tests`) dedicado a validar o comportamento da API de ponta a ponta.
-    * **`WebApplicationFactory`:** Utilização de um servidor de teste em memória para fazer requisições HTTP reais à API sem a necessidade de hospedá-la.
-    * **Banco de Dados SQLite em Memória:** Configuração de uma `WebApplicationFactory` customizada para garantir que cada execução de teste utilize um banco de dados limpo, isolado e em memória, garantindo a atomicidade e confiabilidade dos testes.
-    * **Testes de Segurança:** Testes que provam especificamente que as regras de segurança estão funcionando, verificando que endpoints retornam `401 Unauthorized` para requisições sem token e `200 OK` para requisições com um token válido.
+    * **Testes de Integração:** Um projeto de teste (`SecureApi.Tests`) com testes fundamentais que validam a lógica de segurança da API de ponta a ponta.
+    * **`WebApplicationFactory`:** Utilização de um servidor de teste customizado e em memória para realizar requisições HTTP reais à API.
+    * **Banco de Dados SQLite em Memória:** Configuração da `WebApplicationFactory` para garantir que cada execução de teste utilize um banco de dados limpo e isolado, assegurando resultados de teste confiáveis e repetíveis.
+    * **Verificação de Segurança:** Testes automatizados que provam que as regras de segurança são aplicadas, retornando `401 Unauthorized` para requisições sem token e `200 OK` para requisições com um token válido.
 
 * **Arquitetura e Boas Práticas:**
-    * **Arquitetura Limpa & SOLID:** Uma arquitetura em camadas (Controller, Service, Repository) que adere aos princípios SOLID para um código manutenível e escalável.
-    * **Padrão de Repositório & Injeção de Dependência:** Abstração do acesso a dados e uso extensivo de DI para um código desacoplado e testável.
-    * **Swagger/OpenAPI:** Configuração do Swagger para suportar autenticação JWT, permitindo testes manuais fáceis de endpoints protegidos através do botão "Authorize".
+    * **Arquitetura Limpa & SOLID:** Uma arquitetura em camadas (Controller, Service, Repository) que adere aos princípios SOLID para um código manutenível.
+    * **Padrão de Repositório & Injeção de Dependência:** Abstração do acesso a dados e uso extensivo de DI para uma estrutura de aplicação desacoplada e testável.
+    * **Swagger/OpenAPI:** Configuração do Swagger para suportar autenticação JWT, permitindo testes manuais de endpoints protegidos.
 
 ## 📋 Endpoints da API
 
-A API expõe os seguintes endpoints:
+A API expõe os seguintes endpoints para demonstrar o fluxo de autenticação:
 
 | Verbo    | Rota                  | Descrição                                 | Segurança                     |
 | :------- | :-------------------- | :---------------------------------------- | :---------------------------- |
 | `POST`   | `/api/Auth/register`  | Registra um novo usuário.                 | **Público** |
 | `POST`   | `/api/Auth/login`     | Autentica um usuário e retorna um JWT.    | **Público** |
-| `GET`    | `/api/Products`       | Lista todos os produtos.                  | **Protegido (Requer Token)** |
+| `GET`    | `/api/Products`       | (Exemplo) Lista todos os produtos.        | **Protegido (Requer Token)** |
 
 ## ⚙️ Como Executar o Projeto
 
@@ -134,13 +143,13 @@ A API expõe os seguintes endpoints:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/SEU-USUARIO/.Net8-Auth-And-Testing.git](https://github.com/SEU-USUARIO/.Net8-Auth-And-Testing.git)
+    git clone [https://github.com/SEU-USUARIO/.Net8-RestfulAPI-With-Middleware.git](https://github.com/SEU-USUARIO/.Net8-RestfulAPI-With-Middleware.git)
     ```
     (Lembre-se de substituir `SEU-USUARIO` pelo seu nome de usuário do GitHub)
 
 2.  **Navegue até a pasta do projeto:**
     ```bash
-    cd .Net8-Auth-And-Testing/SecureApi
+    cd .Net8-RestfulAPI-With-Middleware/SecureApi
     ```
 
 3.  **Prepare o Banco de Dados (Apenas na primeira vez):**
