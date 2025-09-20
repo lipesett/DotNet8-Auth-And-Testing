@@ -1,6 +1,6 @@
 # Secure API with Auth & Testing - .NET 8 Portfolio
 
-![.NET](https://img.shields.io/badge/.NET-8-blueviolet) ![C#](https://img.shields.io/badge/C%23-11-blue) ![xUnit](https://img.shields.io/badge/Tests-xUnit-green) ![JWT](https://img.shields.io/badge/Auth-JWT-red) ![Clean Architecture](https://img.shields.io/badge/Architecture-Clean-orange)
+![.NET](https://img.shields.io/badge/.NET-8-blueviolet) ![C#](https://img.shields.io/badge/C%23-11-blue) ![xUnit](https://img.shields.io/badge/Tests-xUnit-green) ![JWT](https://img.shields.io/badge/Auth-JWT-red) ![Clean Architecture](https://img.shields.io/badge/Architecture-Clean-orange) ![SOLID Principles](https://img.shields.io/badge/SOLID-Principles-brightgreen)
 
 This repository is a focused .NET 8 project demonstrating the implementation of a secure, token-based authentication and authorization system using JWT (JSON Web Tokens). The API provides the essential endpoints for user registration and login, alongside a protected resource to validate the security flow. A key feature is the inclusion of foundational integration tests (xUnit) that automatically verify the authentication logic, ensuring that protected endpoints are correctly secured.
 
@@ -98,7 +98,7 @@ You can run the automated tests in two ways:
 
 # API Segura com Autenticação e Testes - Portfólio .NET 8
 
-![.NET](https://img.shields.io/badge/.NET-8-blueviolet) ![C#](https://img.shields.io/badge/C%23-11-blue) ![xUnit](https://img.shields.io/badge/Testes-xUnit-green) ![JWT](https://img.shields.io/badge/Auth-JWT-red) ![Arquitetura Limpa](https://img.shields.io/badge/Arquitetura-Clean-orange)
+![.NET](https://img.shields.io/badge/.NET-8-blueviolet) ![C#](https://img.shields.io/badge/C%23-11-blue) ![xUnit](https://img.shields.io/badge/Testes-xUnit-green) ![JWT](https://img.shields.io/badge/Auth-JWT-red) ![Arquitetura Limpa](https://img.shields.io/badge/Arquitetura-Clean-orange) ![SOLID Principles](https://img.shields.io/badge/Princípios-SOLID-brightgreen)
 
 Este repositório é um projeto focado em .NET 8 que demonstra a implementação de um sistema seguro de autenticação e autorização baseado em tokens JWT (JSON Web Tokens). A API fornece os endpoints essenciais para registro e login de usuários, juntamente com um recurso protegido para validar o fluxo de segurança. Uma característica chave é a inclusão de testes de integração fundamentais (xUnit) que verificam automaticamente a lógica de autenticação, garantindo que os endpoints protegidos estão corretamente seguros.
 
